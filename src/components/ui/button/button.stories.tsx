@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { findAllByDisplayValue } from '@storybook/testing-library'
 
 import { Button } from './'
+
+import { Typography } from '@/components/ui/typography/typography'
 
 const meta = {
   title: 'Components/Button',
@@ -20,9 +23,15 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Primary Button',
     disabled: false,
   },
+  render: args => (
+    <Button {...args}>
+      <Typography variant={'subtitle2'} style={{ color: 'white' }}>
+        Button primary
+      </Typography>
+    </Button>
+  ),
 }
 
 export const Secondary: Story = {

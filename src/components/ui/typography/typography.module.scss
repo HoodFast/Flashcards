@@ -1,55 +1,75 @@
+@import 'src/styles/typography';
+@import 'src/styles/mixins';
+
 .large {
-  color: red;
+  @include text(var(--font-weight-bold), var(--font-size-xxl), var(--line-height-l));
 }
 
 .h1 {
-  color: #0a6638;
+  @include text(var(--font-weight-bold), var(--font-size-xl), var(--line-height-l));
 }
 
 .h2 {
-  color: #1ea7fd;
+  @include text(var(--font-weight-bold), var(--font-size-l), var(--line-height-m));
 }
 
 .h3 {
-  color: #8c61ff;
+  @include text(var(--font-weight-bold), var(--font-size-m), var(--line-height-m));
 }
 
 .body1 {
-  color: #660a1d;
+  @include text(var(--font-weight-regular), var(--font-size-m), var(--line-height-m));
 }
 
 .body2 {
-  color: #cc1439;
+  @include text(var(--font-weight-regular), var(--font-size-s), var(--line-height-m));
 }
 
 .subtitle1 {
-  color: black;
+  @include text(var(--font-weight-bold), var(--font-size-m), var(--line-height-m));
 }
 
 .subtitle2 {
-  color: darkblue;
+  @include text(var(--font-weight-bold), var(--font-size-s), var(--line-height-m));
 }
 
 .caption {
-  color: aqua;
+  @include text(var(--font-weight-regular), var(--font-size-xs), var(--line-height-s));
 }
 
 .overline {
-  color: coral;
+  @include text(var(--font-weight-bold), var(--font-size-xs), var(--line-height-s));
 }
 
 .link1 {
-  color: #382766;
+  @include text(
+    var(--font-weight-regular),
+    var(--font-size-s),
+    var(--line-height-m),
+    var(--color-info-500)
+  );
+
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .link2 {
-  color: darkkhaki;
+  @include text(
+    var(--font-weight-regular),
+    var(--font-size-xs),
+    var(--line-height-s),
+    var(--color-info-500)
+  );
+
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .error {
-  color: red;
-}
-
-.test {
-  text-decoration: #234e99;
+  @include text(
+    var(--font-weight-regular),
+    var(--font-size-xs),
+    var(--line-height-m),
+    var(--color-danger-300)
+  );
 }

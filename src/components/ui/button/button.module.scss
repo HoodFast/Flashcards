@@ -1,5 +1,17 @@
 .primary {
-  background-color: red;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 36px;
+
+  background-color: var(--color-accent-500);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 18px 0 var(--color-shadow);
 }
 
 .secondary {

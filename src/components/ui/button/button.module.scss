@@ -1,29 +1,125 @@
-.primary {
+@mixin border($bg-color, $border-color: $bg-color, $border: 2px) {
+  background-color: $bg-color;
+  border: $border solid $border-color;
+}
+
+@mixin button {
   cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 150px;
   height: 36px;
+  padding: 0.375rem 1.75rem;
+
+  color: var(--color-light-100);
+}
+
+.primary {
+  @include button;
 
   background-color: var(--color-accent-500);
-  border: 0;
+  border: 2px solid var(--color-accent-500);
   border-radius: 4px;
-  box-shadow: 0 4px 18px 0 var(--color-shadow);
+  box-shadow: 0 4px 18px 0 var(--color-shadow-100);
+
+  &:hover {
+    @include border(var(--color-accent-300));
+  }
+
+  &:active {
+    @include border(var(--color-accent-700));
+  }
+
+  &:focus {
+    border: 2px solid var(--color-info-700);
+  }
+
+  &:disabled {
+    @include border(var(--color-accent-900));
+
+    color: var(--color-light-900);
+  }
 }
 
 .secondary {
-  background-color: green;
+  @include button;
+
+  background-color: var(--color-dark-300);
+  border: 2px solid var(--color-dark-300);
+  border-radius: 4px;
+  box-shadow: 0 4px 18px 0 var(--color-shadow-200);
+
+  &:hover {
+    @include border(var(--color-dark-100));
+  }
+
+  &:active {
+    @include border(var(--color-dark-500));
+  }
+
+  &:focus {
+    border: 2px solid var(--color-info-700);
+  }
+
+  &:disabled {
+    @include border(var(--color-dark-300));
+
+    color: var(--color-light-900);
+  }
 }
 
 .tertiary {
-  background-color: blue;
+  @include button;
+
+  color: var(--color-accent-500);
+  background-color: transparent;
+  border: 1px solid var(--color-accent-500);
+  border-radius: 4px;
+
+  &:hover {
+    @include border(var(--color-dark-300), var(--color-accent-700), 1px);
+  }
+
+  &:active {
+    @include border(var(--color-accent-900), var(--color-accent-700), 1px);
+  }
+
+  &:focus {
+    border: 2px solid var(--color-info-700);
+  }
+
+  &:disabled {
+    @include border(transparent, var(--color-accent-900));
+
+    color: var(--color-accent-900);
+  }
 }
 
 .link {
-  background-color: yellow;
+  @include button;
+
+  color: var(--color-accent-500);
+  background-color: transparent;
+  border: 0;
+
+  &:hover {
+    color: var(--color-accent-300);
+  }
+
+  &:active {
+    color: var(--color-accent-700);
+  }
+
+  &:focus {
+    border: 1px solid var(--color-info-700);
+    border-radius: 16px;
+  }
+
+  &:disabled {
+    color: var(--color-accent-900);
+  }
 }
 
 .fullWidth {

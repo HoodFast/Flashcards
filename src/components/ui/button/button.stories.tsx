@@ -4,7 +4,13 @@ import { findAllByDisplayValue } from '@storybook/testing-library'
 import { Button } from './'
 
 import { Typography } from '@/components/ui/typography/typography'
-
+const divStyle = {
+  height: '60px',
+  backgroundColor: 'black',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
 const meta = {
   title: 'Components/Button',
   component: Button,
@@ -26,11 +32,23 @@ export const Primary: Story = {
     disabled: false,
   },
   render: args => (
-    <Button {...args}>
-      <Typography variant={'subtitle2'} style={{ color: 'white' }}>
-        Button primary
-      </Typography>
-    </Button>
+    <div style={divStyle}>
+      <Button {...args}>Button primary</Button>
+    </div>
+  ),
+}
+
+export const Link: Story = {
+  args: {
+    variant: 'primary',
+    disabled: false,
+  },
+  render: args => (
+    <div style={divStyle}>
+      <Button as={'a'} {...args}>
+        Button link
+      </Button>
+    </div>
   ),
 }
 
@@ -48,13 +66,6 @@ export const Tertiary: Story = {
     disabled: false,
   },
 }
-export const Link: Story = {
-  args: {
-    variant: 'link',
-    children: 'Tertiary Button',
-    disabled: false,
-  },
-}
 
 export const FullWidth: Story = {
   args: {
@@ -62,13 +73,5 @@ export const FullWidth: Story = {
     children: 'Full Width Button',
     disabled: false,
     fullWidth: true,
-  },
-}
-
-export const AsLink: Story = {
-  args: {
-    variant: 'primary',
-    children: 'Link that looks like a button',
-    as: 'a',
   },
 }

@@ -26,5 +26,5 @@ export const Typography = <T extends ElementType = 'button'>(
 ) => {
   const { variant = 'body1', className, as: Component = 'p', ...rest } = props
 
-  return <Component className={`${s[variant]}`} {...rest} />
+  return <Component className={`${s[variant]} ${className}`} {...rest} />
 }

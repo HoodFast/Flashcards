@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { findAllByDisplayValue } from '@storybook/testing-library'
 
 import { Button } from './'
 
-import { Typography } from '@/components/ui/typography/typography'
 const divStyle = {
   height: '60px',
   backgroundColor: 'black',

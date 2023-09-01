@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { CheckboxRoot } from './checkbox'
 
+import { Card } from '@/components/card'
+
 const divStyle = {
   height: '60px',
   backgroundColor: 'black',
@@ -19,10 +21,12 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Checkbox: Story = {
-  args: {},
+  args: {
+    checked: true,
+  },
   render: args => (
-    <div style={divStyle}>
+    <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <CheckboxRoot {...args} />
-    </div>
+    </Card>
   ),
 }

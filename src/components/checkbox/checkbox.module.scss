@@ -1,0 +1,61 @@
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  cursor: pointer;
+
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  background-color: rgb(255 255 255 / 0%);
+  border-radius: 17px;
+
+  .checkboxRoot {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    background-color: transparent;
+    border: 2px solid var(--color-light-900);
+    border-radius: 2px;
+  }
+
+  .label {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    margin: 10px;
+
+    color: var(--color-light-100);
+    white-space: nowrap;
+  }
+
+  &:focus-within,
+  &:hover {
+    position: absolute;
+    background-color: var(--color-dark-500);
+  }
+
+  &:active:not(.disabled) {
+    background-color: var(--color-dark-100);
+  }
+
+  &.left {
+    margin-left: -9px;
+  }
+}

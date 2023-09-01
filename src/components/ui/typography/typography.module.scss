@@ -1,5 +1,12 @@
 @import 'src/styles/typography';
-@import 'src/styles/mixins';
+
+@mixin text($fontWeight, $fontSize, $lineHeight, $textColor: var(--color-dark-900)) {
+  font: var(--font-family-primary);
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: $textColor;
+}
 
 .large {
   @include text(var(--font-weight-bold), var(--font-size-xxl), var(--line-height-l));

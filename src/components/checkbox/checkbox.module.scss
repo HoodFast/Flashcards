@@ -3,59 +3,103 @@
   align-items: center;
 }
 
-.wrapper {
+.checkboxRoot {
   cursor: pointer;
 
-  position: absolute;
+  position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 36px;
-  height: 36px;
+  width: 18px;
+  height: 18px;
 
-  background-color: rgb(255 255 255 / 0%);
-  border-radius: 17px;
+  background-color: transparent;
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
 
-  .checkboxRoot {
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 18px;
-    height: 18px;
-
-    background-color: transparent;
-    border: 2px solid var(--color-light-900);
-    border-radius: 2px;
+  &:disabled {
+    cursor: initial;
+    border: 2px solid var(--color-dark-100);
   }
 
-  .label {
-    cursor: pointer;
+  &:hover:not(:disabled) {
+    .circle {
+      position: absolute;
 
-    display: flex;
-    align-items: center;
+      width: 36px;
+      height: 36px;
 
-    margin: 10px;
+      background-color: var(--color-dark-500);
+      border-radius: 17px;
 
-    color: var(--color-light-100);
-    white-space: nowrap;
+      transition: background-color 0.1s;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 9px;
+        left: 9px;
+
+        width: 18px;
+        height: 18px;
+
+        background-color: transparent;
+        border: 2px solid var(--color-light-900);
+        border-radius: 2px;
+      }
+    }
   }
 
-  &:focus-within,
-  &:hover {
-    position: absolute;
-    background-color: var(--color-dark-500);
-  }
+  &:active:not(:disabled) {
+    .circle {
+      position: absolute;
 
-  &:active:not(.disabled) {
-    background-color: var(--color-dark-100);
-  }
+      width: 36px;
+      height: 36px;
 
-  &.left {
-    margin-left: -9px;
+      background-color: var(--color-dark-100);
+      border-radius: 17px;
+
+      transition: background-color 0.1s;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 9px;
+        left: 9px;
+
+        width: 18px;
+        height: 18px;
+
+        background-color: transparent;
+        border: 2px solid var(--color-light-900);
+        border-radius: 2px;
+      }
+    }
   }
+}
+
+.label {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  margin: 10px;
+
+  color: var(--color-light-100);
+  white-space: nowrap;
+
+  &.disabledLabel {
+    cursor: initial;
+    color: var(--color-dark-100);
+  }
+}
+
+.CheckboxIndicator {
+  position: absolute;
 }

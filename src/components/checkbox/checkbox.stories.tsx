@@ -22,7 +22,8 @@ type Story = StoryObj<typeof meta>
 
 export const Checkbox: Story = {
   args: {
-    checked: true,
+    checked: false,
+    disabled: false,
   },
   render: args => (
     <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

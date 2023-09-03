@@ -1,0 +1,86 @@
+@mixin circle($BGColor) {
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+
+  background-color: $BGColor;
+  border-radius: 17px;
+
+  transition: background-color 0.1s;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 9px;
+    left: 9px;
+
+    width: 18px;
+    height: 18px;
+
+    background-color: transparent;
+    border: 2px solid var(--color-light-900);
+    border-radius: 2px;
+  }
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxRoot {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  background-color: transparent;
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
+
+  &:disabled {
+    cursor: initial;
+    border: 2px solid var(--color-dark-100);
+  }
+
+  &:hover:not(:disabled) {
+    .circle {
+      @include circle(var(--color-dark-500));
+    }
+  }
+
+  &:active:not(:disabled) {
+    .circle {
+      @include circle(var(--color-dark-100));
+    }
+  }
+}
+
+.label {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  margin: 10px;
+
+  color: var(--color-light-100);
+  white-space: nowrap;
+
+  &.disabledLabel {
+    cursor: initial;
+    color: var(--color-dark-100);
+  }
+}
+
+.CheckboxIndicator {
+  position: absolute;
+}

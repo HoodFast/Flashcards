@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
-import { CheckboxRoot } from '@/components/checkbox/checkbox'
 import { Button } from '@/components/ui'
+import { CheckboxUI } from '@/components/ui/checkbox/checkbox'
+import { TextField } from '@/components/ui/text-field.tsx/text-field'
 
 export function App() {
   const [checked1, setChecked1] = useState<boolean>(false)
@@ -14,10 +15,23 @@ export function App() {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        height: '300px',
+      }}
+    >
       <Button>test button</Button>
-      <CheckboxRoot callback={onClick1} checked={checked1} disabled={false}></CheckboxRoot>
-      <CheckboxRoot callback={onClick2} checked={checked2} disabled={true}></CheckboxRoot>
+      <CheckboxUI
+        id={'1'}
+        callback={onClick1}
+        checked={checked1}
+        disabled={false}
+        title={'check-box №1'}
+      ></CheckboxUI>
+      <TextField placeholder={'test'} />
     </div>
   )
 }

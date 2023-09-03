@@ -9,11 +9,13 @@ import CheckedIcon from '@/assets/icons/CheckedIcon'
 import { Typography } from '@/components/ui/typography/typography'
 
 export type CheckboxPropsType = {
+  id: string
+  title?: string
   checked?: boolean
   disabled?: boolean
   callback?: (checked: boolean) => void
 }
-export const CheckboxRoot: FC<CheckboxPropsType> = ({ checked, disabled, callback }) => {
+export const CheckboxUI: FC<CheckboxPropsType> = ({ id, title, checked, disabled, callback }) => {
   return (
     <form>
       <div className={s.checkboxContainer}>
@@ -23,7 +25,7 @@ export const CheckboxRoot: FC<CheckboxPropsType> = ({ checked, disabled, callbac
           checked={checked}
           className={s.checkboxRoot}
           defaultChecked
-          id="c1"
+          id={id}
         >
           <span className={s.circle}></span>
           <Checkbox.Indicator className={s.CheckboxIndicator}>
@@ -32,8 +34,8 @@ export const CheckboxRoot: FC<CheckboxPropsType> = ({ checked, disabled, callbac
         </Checkbox.Root>
 
         <Typography variant="body2" as={'label'}>
-          <label htmlFor={'c1'} className={`${s.label} ${disabled && s.disabledLabel}`}>
-            check-box test
+          <label htmlFor={id} className={`${s.label} ${disabled && s.disabledLabel}`}>
+            {title}
           </label>
         </Typography>
       </div>

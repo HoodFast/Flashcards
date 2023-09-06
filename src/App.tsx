@@ -31,7 +31,8 @@ export function App() {
         disabled={false}
         title={'check-box №1'}
       ></CheckboxUI>
-      <TextField placeholder={'test'} />
+      <TextField placeholder={'password'} variant={'password'} />
+      <TextField placeholder={'text'} variant={'error'} />
     </div>
   )
 }

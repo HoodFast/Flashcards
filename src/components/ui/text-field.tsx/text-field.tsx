@@ -39,7 +39,7 @@ export const TextField: FC<textFieldPropsType> = ({ placeholder, variant }) => {
           </button>
         )}
         {errorType && (
-          <Typography className={s.error} variant={'caption'}>
+          <Typography className={s.errorText} variant={'caption'}>
             error!
           </Typography>
         )}

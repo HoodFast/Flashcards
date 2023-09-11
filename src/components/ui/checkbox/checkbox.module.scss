@@ -62,6 +62,12 @@
       @include circle(var(--color-dark-100));
     }
   }
+
+  &:focus:not(:disabled) {
+    .circle {
+      @include circle(var(--color-dark-500));
+    }
+  }
 }
 
 .label {

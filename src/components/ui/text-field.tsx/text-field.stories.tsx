@@ -24,6 +24,7 @@ export const TextFieldText: Story = {
   args: {
     placeholder: 'text',
     variant: 'text',
+    label: 'input',
   },
   render: args => (
     <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -35,6 +36,7 @@ export const TextFieldPassword: Story = {
   args: {
     placeholder: 'password',
     variant: 'password',
+    label: 'password',
   },
   render: args => (
     <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -45,7 +47,8 @@ export const TextFieldPassword: Story = {
 export const TextFieldError: Story = {
   args: {
     placeholder: 'error',
-    variant: 'error',
+    errorMessage: 'value error',
+    label: 'password',
   },
   render: args => (
     <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -1,49 +1,59 @@
-import { FC, useState } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import s from './text-field.module.scss'
 
 import { Typography } from '@/components/ui/typography/typography'
-type variantType = 'password' | 'text' | 'error'
+type variantType = 'password' | 'text'
 export type textFieldPropsType = {
   placeholder?: string
   variant?: variantType
-}
+  errorMessage?: string
+  label?: string
+  onValueChange?: (value: string) => void
+} & ComponentPropsWithoutRef<'input'>
 
-export const TextField: FC<textFieldPropsType> = ({ placeholder, variant }) => {
-  const [textType, setTextType] = useState<variantType>(variant)
-  const handlerTextType = () => {
-    switch (textType) {
-      case 'password':
-        setTextType('text')
-        break
-      case 'text':
-        setTextType('password')
-        break
+export const TextField = forwardRef<HTMLInputElement, textFieldPropsType>(
+  ({ placeholder, variant, errorMessage, label, onChange, onValueChange, ...rest }, ref) => {
+    const [textType, setTextType] = useState<variantType>(variant)
+    const handlerTextType = () => {
+      switch (textType) {
+        case 'password':
+          setTextType('text')
+          break
+        case 'text':
+          setTextType('password')
+          break
+      }
     }
-  }
-  const errorType = variant === 'error'
-  const styleInput = `${s.input}  ${errorType ? s.error : ''}`
 
-  console.log(styleInput)
+    const errorType = !!errorMessage
+    const styleInput = `${s.input}  ${errorType ? s.error : ''}`
 
-  return (
-    <>
-      <label>
-        <Typography variant="body2" as={'span'} className={s.label}>
-          input
-        </Typography>
-        <input placeholder={placeholder} type={textType} className={styleInput} />
-        {variant === 'password' && (
-          <button onClick={handlerTextType} className={s.button}>
-            х
-          </button>
-        )}
-        {errorType && (
-          <Typography className={s.errorText} variant={'caption'}>
-            error!
+    return (
+      <div className={s.container}>
+        <label>
+          <Typography variant="body2" as={'span'} className={s.label}>
+            {label}
           </Typography>
-        )}
-      </label>
-    </>
-  )
-}
+          <input
+            ref={ref}
+            placeholder={placeholder}
+            type={textType}
+            className={styleInput}
+            {...rest}
+          />
+          {variant === 'password' && (
+            <button type={'button'} onClick={handlerTextType} className={s.button}>
+              х
+            </button>
+          )}
+          {errorMessage && (
+            <Typography className={s.errorText} variant={'caption'}>
+              {errorMessage}
+            </Typography>
+          )}
+        </label>
+      </div>
+    )
+  }
+)

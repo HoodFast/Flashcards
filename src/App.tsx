@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { LoginForm } from '@/components/auth/login-form/login-form'
 import { Button } from '@/components/ui'
 import { CheckboxUI } from '@/components/ui/checkbox/checkbox'
 import { TextField } from '@/components/ui/text-field.tsx/text-field'
@@ -29,10 +30,12 @@ export function App() {
         callback={onClick1}
         checked={checked1}
         disabled={false}
-        title={'check-box №1'}
+        label={'check-box №1'}
       ></CheckboxUI>
-      <TextField placeholder={'password'} variant={'password'} />
-      <TextField placeholder={'text'} variant={'error'} />
+      <TextField label={'password'} placeholder={'password'} variant={'password'} />
+      <TextField placeholder={'text'} errorMessage={'value error'} label={'input'} />
+
+      <LoginForm />
     </div>
   )
 }

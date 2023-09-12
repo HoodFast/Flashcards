@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { useController, useForm } from 'react-hook-form'
 
 import { Button } from '../../ui/button'
 
@@ -12,17 +12,35 @@ type FormValues = {
 }
 
 export const LoginForm = () => {
-  const { register, handleSubmit } = useForm<FormValues>()
-
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>()
+  const {
+    field: { value, onChange },
+  } = useController({ name: 'rememberMe', control, defaultValue: false })
   const onSubmit = (data: FormValues) => {
     console.log(data)
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <TextField {...register('email')} label={'email'} />
+      <TextField
+        {...register('email', {
+          required: { value: true, message: 'email is required' },
+        })}
+        errorMessage={errors.email?.message}
+        label={'email'}
+      />
       <TextField {...register('password')} label={'password'} variant={'password'} />
-      <CheckboxUI {...register('rememberMe')} label={'rememberMe'} style={{ margin: '20px' }} />
+      <CheckboxUI
+        checked={value}
+        callback={onChange}
+        label={'rememberMe'}
+        style={{ margin: '20px' }}
+      />
       <Button type="submit">Submit</Button>
     </form>
   )

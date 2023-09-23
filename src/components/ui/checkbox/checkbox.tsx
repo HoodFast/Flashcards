@@ -12,14 +12,20 @@ export type CheckboxPropsType = {
   label?: string
   checked?: boolean
   disabled?: boolean
-  callback?: (checked: boolean) => void
+  onCheckedChange?: (checked: boolean) => void
 } & ComponentPropsWithoutRef<'input'>
-export const CheckboxUI: FC<CheckboxPropsType> = ({ id, label, checked, disabled, callback }) => {
+export const CheckboxUI: FC<CheckboxPropsType> = ({
+  id,
+  label,
+  checked,
+  disabled,
+  onCheckedChange,
+}) => {
   return (
     <form>
       <div className={s.checkboxContainer}>
         <Checkbox.Root
-          onCheckedChange={callback}
+          onCheckedChange={onCheckedChange}
           disabled={disabled}
           checked={checked}
           className={s.checkboxRoot}

@@ -26,7 +26,7 @@ export const ControlledCheckbox = <T extends FieldValues>({
   return (
     <CheckboxUI
       {...{
-        callback: onChange,
+        onCheckedChange: onChange,
         checked: value,
         id: name,
         ...checkboxProps,

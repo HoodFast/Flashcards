@@ -1,12 +1,12 @@
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useController, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Button } from '../../ui/button'
 
-import { CheckboxUI } from '@/components/ui/checkbox/checkbox'
 import { ControlledCheckbox } from '@/components/ui/controlled/controlled-check-box/controlled-check-box'
+import { ControlledTextField } from '@/components/ui/controlled/controlled-text-field/controlled-text-field'
 import { TextField } from '@/components/ui/text-field.tsx/text-field'
 
 const schema = z.object({
@@ -37,13 +37,8 @@ export const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <DevTool control={control} />
-      <TextField {...register('email')} errorMessage={errors.email?.message} label={'email'} />
-      <TextField
-        {...register('password')}
-        label={'password'}
-        variant={'password'}
-        errorMessage={errors.password?.message}
-      />
+      <ControlledTextField name={'email'} control={control} label={'email'} />
+      <ControlledTextField name={'password'} control={control} label={'password'} />
       <ControlledCheckbox name={'rememberMe'} control={control} label={'rememberMe'} />
       <Button type="submit">Submit</Button>
     </form>

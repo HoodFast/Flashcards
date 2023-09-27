@@ -6,7 +6,6 @@ import { Typography } from '@/components/ui/typography/typography'
 
 export type textFieldPropsType = {
   placeholder?: string
-
   errorMessage?: string
   label?: string
   onValueChange?: (value: string) => void
@@ -18,10 +17,12 @@ export const TextField: React.FC<textFieldPropsType> = ({
   errorMessage,
   label,
   onChange,
+  value,
   onValueChange,
   ...rest
 }) => {
   const [textType, setTextType] = useState(type)
+
   const handlerTextType = () => {
     switch (textType) {
       case 'password':
@@ -45,7 +46,14 @@ export const TextField: React.FC<textFieldPropsType> = ({
         <Typography variant="body2" as={'span'} className={s.label}>
           {label}
         </Typography>
-        <input placeholder={placeholder} type={textType} className={styleInput} {...rest} />
+        <input
+          placeholder={placeholder}
+          type={textType}
+          className={styleInput}
+          onChange={onChange}
+          value={value}
+          {...rest}
+        />
         {type === 'password' && (
           <button type={'button'} onClick={handlerTextType} className={s.button}>
             х

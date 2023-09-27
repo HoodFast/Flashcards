@@ -7,8 +7,6 @@ export type ControlledCheckboxProps<T extends FieldValues> = UseControllerProps<
 
 export const ControlledCheckbox = <T extends FieldValues>({
   name,
-  rules,
-  shouldUnregister,
   control,
   defaultValue,
   ...checkboxProps
@@ -17,8 +15,6 @@ export const ControlledCheckbox = <T extends FieldValues>({
     field: { onChange, value },
   } = useController({
     name,
-    rules,
-    shouldUnregister,
     control,
     defaultValue,
   })

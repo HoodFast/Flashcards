@@ -25,8 +25,8 @@ export const LoginForm = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      email: '123@mail.ru',
-      password: '1234567',
+      email: '',
+      password: '',
       rememberMe: false,
     },
   })
@@ -38,7 +38,12 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <DevTool control={control} />
       <ControlledTextField name={'email'} control={control} label={'email'} />
-      <ControlledTextField name={'password'} control={control} label={'password'} />
+      <ControlledTextField
+        name={'password'}
+        control={control}
+        label={'password'}
+        type={'password'}
+      />
       <ControlledCheckbox name={'rememberMe'} control={control} label={'rememberMe'} />
       <Button type="submit">Submit</Button>
     </form>
